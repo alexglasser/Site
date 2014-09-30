@@ -1,0 +1,478 @@
+@charset "UTF-8";
+@import url('http://fonts.googleapis.com/css?family=Playfair+Display');
+/* Header/title font imported from the Google API */
+
+/*
+   File: aglasser/public_html/css/stylesheet.css
+   Alex Glasser, UMass Lowell Computer Science: alexander_glasser@student.uml.edu
+   91.461 - GUI Programming
+   Main stylesheet for GUI Programming I website.
+
+   Based on http://d.alistapart.com/responsive-web-design/ex/ex-site-linearize.html
+   Styling reverse engineered by Alex Glasser
+ */
+
+html, body { height: 100%; }
+
+/*
+ * Source tutorial for the layout of the page: 
+ *     http://alistapart.com/article/responsive-web-design 
+ * Source 'finished' page for the layout of the page:
+ *     http://d.alistapart.com/responsive-web-design/ex/ex-site-linearize.html
+ *
+ * The idea here is "responsive web design" so that the page will look
+ * good regardless of the browser width. This allows the page to be 
+ * viewed on any size computer monitor and even phone browsers.
+ * I uesd a lot of the CSS from the "ex-site-lineaize.html" file above
+ * to build the structure of this page. It has been modified heavily by 
+ * me to reflect what I actually wanted the page to look like. 
+ * 
+ * Essentially, the page is formatted in a grid layout. When the browser
+ * width is resized lower than 600px, the CSS media query near the bottom 
+ * of the page kicks in: @media (max-width: 600px); This then changes some
+ * parameters of the page to structure it differently on the smaller 
+ * screen.
+ * 
+ * The page layout is originally [mast   ][intro  ]
+ *                               [mast   ][main   ]
+ *                               [     footer     ]
+ * 
+ * The page layout at 600px is   [mast   ]
+ *                               [intro  ]
+ *                               [main   ]
+ *                               [footer ]
+ *
+ * This also allows the page to scale when the browser is zoomed. 
+ * I've documented and modified a lot of the tricks used to accomplish 
+ * this feature.
+ */
+
+.section:after,
+ul.nav:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/* CSS Reset from: */
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,
+blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,
+em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,
+var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td { 
+    margin:0; 
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent; 
+}
+
+body { 
+    line-height:1; 
+}
+ol, ul { 
+    list-style:none; 
+}
+blockquote, q { 
+    quotes:none; 
+}
+blockquote:before, blockquote:after, q:before, q:after { 
+    content:''; 
+    content:none; 
+}
+ins { 
+    text-decoration:none; 
+}
+del { 
+    text-decoration:line-through; 
+}
+table { 
+    border-collapse:collapse;
+    border-spacing:0; 
+}
+/* /end CSS reset */
+
+/* Style the body with a background texture
+ * font: 100%; allows it to scale properly on smaller
+ * screens. */
+body {
+    background: #e8e8e8;
+    /* Background pattern from subtlepatterns.com */
+    background: url('../images/textures/seamless_paper_texture.png');
+    color: #292929;
+    color: rgba(0, 0, 0, 0.82);
+    font: normal 100% Helvetica, Arial, sans-serif;
+    font-size: 90%;
+}
+
+/* Hyperlink defaults for nav/figures 
+   Black hyperlink to start, light blue when hovered over
+   with a 0.2s delay for the color change */
+a {
+    color: #000000;
+    text-decoration: none;
+    -moz-transition: 0.2s color linear;
+    -webkit-transition: 0.2s color linear;
+    transition: 0.2s color linear;
+}
+a:hover {
+    color: #3366cc; /* light blue */
+}
+
+/* Give the entire page some room to breathe on top */
+#page {
+    padding-top: 2em;
+}
+
+/* inner section contains the mast, intro, and main sections
+ * page 
+ * > inner 
+ * > > mast
+ * > > intro
+ * > > main    */
+.inner {
+    margin: 0 auto;
+    width: 93.75%;      /* 960px / 1024px */
+    height: 100%;
+}
+
+/* Force all images to fill 90% of their containing div 
+ * This allows my picture to scale properly in the mast
+ * at all resolutions */
+img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* The mast floats left on a regular sized screen and fills
+ * 32% of the screen. */
+.mast {
+    float: left;
+    width: 32%; /* ~306px / ~960px */
+}
+
+/* Just keeping h1 border commented for debug purposes later */
+h1 {
+    /*border: 1px solid;
+    border-radius: 8px;*/
+}
+
+/* Round the corners on my picture */
+img.me {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* The "logo" is everything including my name, class name (GUI),
+ * and my picture. Center all text and the picture */
+.logo {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Font for h1 imported from Google API (Playfair Display) 
+   If unable to get that font, use similar fonts (Book Antiqua is good,
+   but any serif font will do) */
+h1.logo {
+    font-family: "Playfair Display", "Book Antiqua", "Palatino Linotype", "Palatino", serif;
+}
+
+/* h2 just uses a sans-serif font and is moved up by 0.5em
+ * em is more scalable than px or percent! */
+h2.logo {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 120%;
+    margin-top: -0.5em;
+}
+
+/* h1 a is for the img picture - nothing else is a hyperlink in an h1 tag */
+h1 a {
+    padding-top: 117px;
+    height: 162px;
+    display: block;
+    text-align: center;
+}
+
+/* Float all of the inner pieces to the right side of the page */
+/* Used to be .intro, .main, .footer */
+.intro,
+.main {
+    float: right;
+    width: 65.9375%;    /* 633px / 960px */
+}
+
+/* Make footer extend across bottom of page */
+.footer {
+    float:left;
+    width:100%;
+}
+
+/* Keeping 0 margin here because I might change it later */
+.intro {
+    margin-top: 0px;
+}
+
+/* Change the line height, makes the text look better in a paragraph */
+.intro div, .main div {
+    line-height: 1.4;
+}
+
+/* Light blue for all links in the intro section */
+.intro a:link, .intro a:visited {
+    color: #3366cc;
+}
+
+/* a.reference is a reference link on the assignments page 
+   for sources that helped me */
+.main a.reference {
+    color: #3366cc;
+}
+
+/* Grey color when hovering hyperlinks in intro and main.references */
+.intro a:hover, .main a.reference:hover {
+    color: #666666;
+}
+
+/* Style the entire navigation box */
+ul.nav {
+    border-top: 1px solid #888583; /* gray top border for a horizontal line effect */
+    margin: 2em auto 0;
+    width: 64.379%; /* specific width to get it to look good on mobile as well */
+    padding-top: .5em; /* Move the entire nav down slightly */
+}
+
+/* Look and feel of the navigation links */
+ul.nav a {
+    /* Based on: http://bavotasan.com/2011/amazing-hover-effects-with-css3/  */
+    background: #f0f0f0; /* off-white */
+    /* Inner shadow for around the link border: */
+    -moz-box-shadow:    inset 0 0 4px #000000;
+    -webkit-box-shadow: inset 0 0 4px #000000;
+    box-shadow:         inset 0 0 4px #000000;
+    /* end shadow */
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    /* Played around with letter spacing for a while to get it to pad correctly when 
+     * resized and when on mobile: */
+    letter-spacing: 0.1em;
+    line-height: 0em; /* keeping this here for testing */
+    padding-top: 1em;     /* Keep the navigation buttons */
+    padding-bottom: 1em;  /*     away from each other    */
+    margin-bottom: .5em;  /* Additional styling to place buttons properly */
+    border: 1px solid;    /* Give the link a border */
+    border-radius: 8px;   /* Make it rounded for a button effect */
+}
+
+/* The website I used as a basis for this design used classes on the navigation links to 
+   style them  differently. I don't really use this aspect of the design, but I'm leaving 
+   this here in case I decide to use the class for anything later */
+li.first a {
+    /*border-top: 1px solid #FFF9EF;*/      /* Looks bad with the current styling of ul.nav a */
+    /*padding-top: 3em; /*1.25em; */        /* Stretches the "button" for Home                */
+}
+
+/* Font for h1 imported from Google API (Playfair Display) 
+   If unable to get that font, use similar fonts (Book Antiqua is good,
+   but any serif font will do) */
+.intro h1 {
+    font: normal 1.7em "Playfair Display", "Book Antiqua", "Palatino Linotype", "Palatino", serif;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+/* Want h1 to stand out, so keep a serif font for h2 */
+.intro h2 {
+    font: normal 1.5em Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 0.25em;
+}
+.main h2 {
+    font-size: 1.4em;
+    text-align: center;
+    margin: 0.75em 0 1em;
+}
+.main h2 b {
+    font-weight: normal;
+    padding: 0 1em;
+}
+
+/* Figure sets up how the "interests" section of the page looks */
+/* This is a neat way to set everything in a grid and have it
+   resize itself as you resize the page. */
+
+/* Old values provided by the website I used as a starting point:
+   margin: 0 3.317535545023696682% 1.5em 0; /* 0 1% 3.3em 0;
+   width: 31.121642969984202211%; /* 197px / 633px
+   These are way too specific and unnecessary. I changed them to 
+   be more readable */
+.figure {
+    float: left;
+    font-size: 10px;
+    line-height: 1.25; /* 1.1 ? */
+    /* Fix the margin between "figures" (icons) */
+    margin: 0 3.317% 1.5em 0; /* 0 1% 3.3em 0; */
+    text-align: center;
+    width: 31.122%; 
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+/* Make bold text stand out more
+   Used to create an effect like:
+       [Category]
+     [  Interest  ]
+   On the figures
+   eg. Category is "Scripting" and Interest is "Python" */
+.figure b {
+    display: block;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+    letter-spacing: 0.1em;
+}
+
+/* Creates a nice rounded border for the icons for each figure */
+.figure img {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);;
+    display: block;
+    background: #d3d3d3;
+    border: 1px solid;
+    /* http://jsfiddle.net/u3Ahk/
+    -webkit-transition: border-color 1s ease;
+       -moz-transition: border-color 1s ease;
+         -o-transition: border-color 1s ease;
+        -ms-transition: border-color 1s ease;
+            transition: border-color 1s ease; 
+    */
+    margin: 0 auto 1em;
+}
+
+/* Blue border when hovering on the figure images */
+.figure img:hover {
+    border-color: #3366cc;
+}
+
+/* These are the two left-most figures, make them fit properly on the page when resizing */
+li#f-opencv,
+li#f-objc {
+    margin-right: 0;
+}
+
+/* Removed the border from the footer because I use <hr> to get the 
+   effect I wanted */
+.footer {
+    /*border: 1px solid;
+    border-radius: 8px;*/
+    font-size: 12px;
+    text-align: center;
+    /*padding: 40px 0 20px;*/
+    padding: 10px;
+    margin-top: 4em;
+    height: 100%;
+    font-style: italic;
+}
+
+/* Fix each paragraph in the footer to look nice together */
+.footer p {
+    margin-bottom: 0.0em; /* 0.5 ? */
+    height: 50%;
+}
+
+/* This part is what matters for scaling.
+   Reorganizes the order of the divs by modifying their
+   float and width properties. Once the browser is sized to
+   599-600px, it will toggle between one and two columns 
+   and looks great on all monitor sizes. This bit of code is
+   why I used the existing design from alistapart.com (link
+   in header) */
+@media (max-width: 600px) {
+    /* 633px grid (88x6 col, 21x5 gut; 88+21+88+21+88+21+88+21+88+21+88) */
+    .inner {
+        position: relative;
+    }
+    .mast, /* Change all float properties so they will stay in one column */
+    .intro,
+    .main,
+    .footer {
+        float: none;
+        width: auto;
+    }
+}
+
+/* I added my own name, so fix up the styling */
+.mast h1 {
+    text-align: center;
+    font-size: 36px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+/* CSS for hr tag from http://css-tricks.com/examples/hrs/ */
+hr.faded {
+   border: 0;
+   height: 1px;
+   background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+   background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+   background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+   background-image: -linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+   background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+}
+
+/* Override the ul values for intro and main so that bullets show
+   Also moves the margin in by a scalable factor (em is better than %)
+   so that it is not so far to the left of the div */
+.intro ul, .main ul {
+    list-style: square;
+    margin-left: 3.5em;
+}
+
+/* Fix the li.enclosing style to NOT show a bullet 
+   This is for nested lists on the "experiences" page */
+.intro ul li.enclosing {
+    list-style: none;
+}
+
+/* Override nested ul element styling, but move the margin more to the left so
+   it is not so spaced out */
+.intro ul ul li, .main ul ul li {
+    list-style: circle;
+    margin-left: -2em;
+}
+
+/* Give the content div some room to breathe inside of the */ 
+#content {
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+}
+
+/* Percentage image width/height did not validate in HTML5, so I moved it to CSS */
+.figure a img {
+    height: 30%;
+    width: 30%;
+}
+
+/* Give the CSS/HTML5 validation badges some room to breathe */
+p.validbadges {
+    padding-top: 1em;
+}
+
+/* Taken straight from the CSS validation embedded style
+   Moved it to the stylesheet to conform with the "no-inline-styles" rule */
+p.validbadges img {
+    border: 0;
+    width: 88px;
+    height: 31px;
+}

@@ -1,0 +1,185 @@
+@charset "utf-8";
+
+/*
+   File: aglasser/public_html/css/mainstylesheet.css
+   Alex Glasser, UMass Lowell Computer Science: alexander_glasser@student.uml.edu
+   91.461 - GUI Programming
+   Created Sept 10, 2014
+   Main stylesheet for GUI Programming I website.
+ */
+
+/* Styling for the body of the page */
+body {
+  /* background-color: #cfcfcf; (dark grey, old bg) */
+  /* Background pattern from subtlepatterns.com */
+  background: url('../images/grey_wash_wall.png');
+  font-family: "Helvetica", "Arial", "sans-serif";
+  font-size: 14px;
+  margin: 0 0 0 0;
+}
+
+/* Styling for the bodycontent div */
+#bodycontent {
+  /* background: #ffffff; (old) */
+  /* Background pattern from subtlepatterns.com */
+  background: url('../images/brushed.png');
+  position: relative;
+  margin-left: 12%;
+  margin-right: 12%;
+  height: 100%; /* 500px? */
+  width: auto;
+  border: 1px solid;
+  border-radius: 15px; /* rounded rect */
+  padding: 10px;
+}
+
+/* Below is based on http://stackoverflow.com/a/11445533/2599996
+   Sets indent level for lists and nested lists in the bodycontent
+   div. This will make the "experiences" page a lot cleaner and
+   easier to look at... */
+#bodycontent ul {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#bodycontent ul ul {
+  margin-top: 0px;
+  margin-left: -10px;
+} 
+/* end code based on SO answer */
+
+#bodycontent h1 {
+  text-align: center;
+  font-size: 20px;
+}
+
+#bodycontent h2 {
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Blockquote is surrounded in rounded rect
+   Looks nice to fill a blockquote with a list */
+#bodycontent blockquote {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+/* Styling for the header */
+#header {
+  position: relative;
+  height: 70px;
+  width: 35%; /* don't want it to take up entire width... */
+  margin-top: 10px;
+  margin-left: auto; /* set margins automatically */
+  margin-right: auto; 
+  border: 1px solid;
+  border-radius: 15px; /* rounded rect */
+  
+  /* Below from: http://www.colorzilla.com/gradient-editor/ 
+     Creates a gradient for the header div 
+     background: #66ccff (old) */
+  background: rgb(240,249,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(240,249,255,1) 0%, rgba(203,235,255,1) 47%, rgba(161,219,255,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(240,249,255,1)), color-stop(47%,rgba(203,235,255,1)), color-stop(100%,rgba(161,219,255,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+  /* End generated gradient code */
+}
+
+/* From: http://css-tricks.com/snippets/css/css-box-shadow/
+   Add a shadow on the bottom edge to the 
+   one-edge-shadow div class */
+.one-edge-shadow {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+/* Styling for header: h1 tag */
+#header h1 {
+  position: relative;
+  top: -10px;
+  font-size: 24px;
+  text-align: center;
+}
+/* Styling for header: h2 tag */
+#header h2 {
+  position: relative;
+  font-size: 20px;
+  top: -24px;
+  text-align: center;
+}
+
+/* Styling for the navigation bar */
+nav {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 18px;
+  margin-left: -26px;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+/* Disable line breaks and style type for nav list */
+nav li { 
+  display: inline;
+  list-style-type: none;
+  font-size: 14px;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 4px;
+  
+  /* Below from: http://www.colorzilla.com/gradient-editor/ 
+     Creates a gradient for the header div */
+  background: rgb(225,255,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(225,255,255,1) 0%, rgba(225,255,255,1) 7%, rgba(225,255,255,1) 12%, rgba(253,255,255,1) 12%, rgba(230,248,253,1) 30%, rgba(200,238,251,1) 54%, rgba(190,228,248,1) 75%, rgba(177,216,245,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(225,255,255,1)), color-stop(7%,rgba(225,255,255,1)), color-stop(12%,rgba(225,255,255,1)), color-stop(12%,rgba(253,255,255,1)), color-stop(30%,rgba(230,248,253,1)), color-stop(54%,rgba(200,238,251,1)), color-stop(75%,rgba(190,228,248,1)), color-stop(100%,rgba(177,216,245,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(225,255,255,1) 0%,rgba(225,255,255,1) 7%,rgba(225,255,255,1) 12%,rgba(253,255,255,1) 12%,rgba(230,248,253,1) 30%,rgba(200,238,251,1) 54%,rgba(190,228,248,1) 75%,rgba(177,216,245,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', endColorstr='#b1d8f5',GradientType=0 ); /* IE6-9 */
+}
+
+/* Based on: http://bavotasan.com/2011/amazing-hover-effects-with-css3/ */
+nav li:hover {
+   -moz-box-shadow:    inset 0 0 4px #000000;
+   -webkit-box-shadow: inset 0 0 4px #000000;
+   box-shadow:         inset 0 0 4px #000000;
+}
+
+nav a {
+  display:inline-block;
+  width: 100px;
+  padding:0 30px
+}
+
+nav a:link {
+  /*color: #3366cc; /* light blue */
+  color: #000000; 
+  text-decoration: none; /* remove underline */
+}
+nav a:visited {
+  /*color: #3366cc; /* no change for nav hyperlinks when visited */
+    color: #000000; 
+  text-decoration: none; /* remove underline */
+}
+/* Bold a nav link when hovered over */
+nav a:hover {
+  color: #000000; /* black */
+  font-weight: bold;
+}
+
+/* Use li class="current" to make it bold when it is current link */
+nav li a.current {
+   font-weight: bold;
+}
