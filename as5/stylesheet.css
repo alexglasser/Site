@@ -1,0 +1,142 @@
+@charset "utf-8"
+/*@import url('http://fonts.googleapis.com/css?family=Sail');*/
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps);
+
+body {
+    font-family: "Times New Roman", "serif";
+    font-family: "Times New Roman", "serif";
+    font-size: 100%;
+    /*background-color: #4169E1;*/
+}
+
+#welcome ul { 
+    width: 100%;
+}
+
+#welcome ul li {
+    display: inline;
+    /*border: 1px solid;*/
+    padding: 0.5em;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#contentheader, #content, #sourcefooter {
+    line-height: 1.4;
+    margin: 1em;
+    background-color: #FFFFFF;
+}
+
+#contentheader, #content {
+    /*border: 1px solid;*/
+}
+
+#header {
+    width: 100%;
+}
+
+#contentheader {
+    text-align: center;
+    padding-top: 1.0em;
+    padding-bottom: 1.0em;
+}
+
+#images {
+    /* leaving for future use */
+}
+
+#images img {
+    width: 40%;
+    height: 40%;
+    float: right;
+    clear: both;
+    margin-right:2em;
+    padding-top: 2em;
+    padding-left: 3em;
+}
+
+#images img.second {
+    padding-bottom: 2em;
+}
+
+#content {
+    padding: 1em;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    /*border: 1px solid; */ /* keeping for debug purposes */
+}
+
+h1.title {
+    /*font-weight: bold;*/
+    font-style: italic;
+    /*font-family: "Oleo Script Swash Caps";*/
+}
+
+h2.author {
+    padding-bottom: 1em;
+    font-size: 1.2em;
+}
+
+h3.date {
+    /*padding-top: .5em;*/
+    /*padding-bottom: 1em;*/
+}
+
+span.authorname {
+    font-weight: bold;
+}
+
+span.authorlifespan {
+    font-style: italic;
+}
+
+h3.locationLabel {
+    font-style: italic;
+}
+
+h3.date {
+    /* monospace font? */
+} 
+
+p.normal {
+    /* in case I want different styling for normal paragraphs later */
+} 
+
+/* http://www.hongkiat.com/blog/css-better-paragraph/ */
+p.first:first-letter { 
+    float: left; 
+    color: #903; 
+    font-size: 4em; 
+    line-height: 0.8em; 
+    padding-top: 0em; 
+    padding-right: .1em; 
+    padding-left: .1px; 
+    font-family: Georgia; 
+}
+
+#sourcefooter {
+    border-top: 1px dotted;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: center;
+}
+
+a.source:link, a.source:visited {
+    color: #3366cc; /* nice light blue */
+}
+
+p.dreamtoday {
+    font-weight: bold;
+    font-style: italic;
+}
+
+p.poem {
+    margin-left: 2em;
+    font-style: italic;
+    line-height: 1.5;
+}

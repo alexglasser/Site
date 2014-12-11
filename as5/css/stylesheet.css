@@ -1,0 +1,254 @@
+@charset "utf-8";
+/* Header/title font imported from the Google API */
+@import url('http://fonts.googleapis.com/css?family=Playfair+Display');
+
+/*
+   File: css/stylesheet.css
+   Alex Glasser, UMass Lowell Computer Science: alexander_glasser@student.uml.edu
+   91.461 - GUI Programming
+   Stylesheet for Assignment 5 - Formatting Dynamic Text
+
+   All classes given to paragraphs are stored in JSON and styled differently:
+     - normal - regular paragraph
+     - poem   - poem section
+     - drop   - should be given drop-cap for first letter
+     - cannot - should be emphasized ("We cannot...")
+ */
+
+/* font-size of 100% allows the page to scale better 
+   serif font looks way more professional for this speech... */
+body {
+    font-family: "Times New Roman", "Times", "serif";
+    font-size: 100%;
+    /*background-color: #4169E1;*/
+}
+
+/* #welcome is a basic nav bar (with only "back" and "main" buttons)
+   as well as contains my name, the assignment, etc. */
+#welcome h1.info, #welcome h2.info, #welcome h3.info {
+    font-weight: normal;
+    /*text-align: center;*/
+    line-height: .8;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 90%;
+    padding-left: 3em;
+}
+
+/* Give the info some room away from the back button */
+#welcome h1.info {
+    padding-top: 0.5em;
+}
+
+/* Fix every welcome ul li element to have some room to breathe
+   And display inline rather than as a list */
+#welcome ul li {
+    display: inline;
+    /*border: 1px solid;*/
+    padding: 0.5em;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+/* Make the back button not move when scrolling */
+#welcome ul.nav {
+    /*text-align: center;*/
+}
+
+/* Style each nav list item as a button */
+#welcome ul.nav li {
+    border: 1px solid;
+    border-radius: 8px;
+    background: #f0f0f0; /* off-white */
+}
+
+#welcome ul.nav li:hover {
+    /* Based on: http://bavotasan.com/2011/amazing-hover-effects-with-css3/  */
+    /* Inner shadow for around the link border: */
+    -moz-box-shadow:    inset 0 0 4px #000000;
+    -webkit-box-shadow: inset 0 0 4px #000000;
+    box-shadow:         inset 0 0 4px #000000;
+}
+/* The "navbar" links should be light blue and have no underline */
+#welcome a:link, #welcome a:visited {
+    color: #3366cc; /* nice light blue */
+    text-decoration: none;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Better underline is the dotted border-bottom... 
+   Use this as the hover effect */
+#welcome a:hover {
+    border-bottom: 1px dotted;
+}
+
+/* 1.4 for default line height and a small margin 
+   keeping the background-color as white for if
+   I decide to change the body background color */
+#contentheader, #content, #sourcefooter {
+    line-height: 1.4;
+    margin: 1em;
+    background-color: #FFFFFF;
+}
+
+/* Dotted border separates the sections nicely */
+#contentheader, #content {
+    /*border: 1px solid;*/
+    border-top: 1px dotted;
+}
+
+/* Contains the header text, so align it center and
+   give it a bit of padding room */
+#contentheader {
+    text-align: center;
+    padding-top: 1.0em;
+    padding-bottom: 1.0em;
+}
+
+/* Rule for the actual #images div, useful to 
+   keep this here for debug purposes */
+#images {
+    /* leaving for future use */
+}
+
+/* For all images in the #images div, restrict their
+   width and float them right. All others, such as 
+   padding, exist to put the text properly against 
+   the paragraphs */
+#images img {
+    width: 40%;
+    height: 40%;
+    float: right;
+    clear: both;
+    margin-right:2em;
+    padding-top: 2em;
+    padding-left: 3em;
+}
+
+/* Not used right now, this would be for a second image of 
+   MLK further down the page */
+#images img.second {
+    padding-bottom: 2em;
+}
+
+/* content wraps the text and images, give it
+   a little padding so it can breathe */
+#content {
+    padding: 1em;
+    /*border-top: 1px dotted;*/
+}
+
+/* Don't want the headers to be bold unless I explicitly say so 
+   Also define the margins (which are 0 now, used to be more for 
+   other styling reasons) */
+#contentheader h1, #contentheader h2, #contentheader h3 {
+    font-weight: normal;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    /*border: 1px solid; */ /* keeping for debug purposes */
+}
+
+/* I love the Google font Playfair Display. It is imported at the top of this file */
+h2, h3 {
+    font-family: "Playfair Display", "Book Antiqua", "Palatino Linotype", "Palatino", serif;
+}
+
+/* "I Have a Dream" should be in italics */
+h1.title {
+    font-style: italic;
+    font-family: "Book Antiqua", "Palatino Linotype", "Palatino", serif;
+}
+
+/* Entire h2 block for the author name and lifespan
+   span tags are used (see below) to style the sections
+   differently */
+h2.author {
+    padding-bottom: 1em;
+    font-size: 1.2em;
+}
+
+/* Separated the author name and lifespan so that I can 
+   make the name itself bold, but make the lifespan italic
+   instead */
+span.authorname {
+    font-weight: bold;
+}
+
+/* Lifespan in italics next to the author name */
+span.authorlifespan {
+    font-style: italic;
+}
+
+/* "delivered at:" should be in italics*/
+h3.locationLabel {
+    font-style: italic;
+}
+
+/* The date class is for the date the speech was given
+   Nothing in this rule any more, but keeping it in case
+   I decide to style the date differently (was monospace) */
+h3.date {
+    /* monospace font? */
+    /*padding-top: .5em;*/
+    /*padding-bottom: 1em;*/
+} 
+
+/* JSON gives "normal" class to all paragraphs that are styled
+   like the main body. Nothing in this rule, but keeping it for
+   the future and for debug purposes */
+p.normal {
+    /* in case I want different styling for normal paragraphs later */
+} 
+
+/* Drop caps for the first letter of the first real paragraph 
+   (other than the first line). Class given to first substantial
+   paragraph in the speech by JSON file.
+   http://www.hongkiat.com/blog/css-better-paragraph/ */
+p.drop:first-letter { 
+    float: left; 
+    color: #903; 
+    font-size: 4em; 
+    line-height: 0.8em; 
+    padding-top: 0em; 
+    padding-right: .1em; 
+    padding-left: .1px; 
+    font-family: Georgia; 
+}
+
+/* Style the footer that contains the source where the speech text 
+   was gathered from */
+#sourcefooter {
+    border-top: 1px dotted;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: center;
+}
+
+/* Give the source link a nice light blue color
+   even if it has been visited */
+a.source:link, a.source:visited {
+    color: #3366cc; /* nice light blue */
+}
+
+/* JSON holds the "cannot" class for the "We cannot..."
+   lines in the speech for italic emphasis */
+p.cannot {
+    font-style: italic;
+}
+
+/* JSON holds the "dreamtoday" class for the "I have a dream today!"
+   lines in the speech. Style the font bold and italic to give
+   emphasis to these lines */
+p.dreamtoday {
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* JSON holds the "poem" class for the poem sections of the speech
+   Here we will give them a larger left margin (indent), make the font
+   italic, and increase the line spacing to 1.5 (prev was 1.4) */
+p.poem {
+    margin-left: 2em;
+    font-style: italic;
+    line-height: 1.5;
+}

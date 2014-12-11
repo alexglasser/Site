@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--   
+          File: aglasser/public_html/as5/index.html
+          Alex Glasser, UMass Lowell Computer Science: alexander_glasser@student.uml.edu
+          91.461 - GUI Programming
+          Assignment 5 - Formatting Dynamic Text
+          Main page. This is a barebones HTML page that is filled dynamically by the 
+          jQuery.ajax call that loads data from ihaveadream.json (MLK's I Have a Dream
+          speech). The only thing really hardcoded is my name and assignment info, as 
+          well as the one menu button to allow for backwards navigation.
+          This page exists to showcase and format text that is placed dynamically, not
+          to showcase my CSS abilities. Of course this page looks bare, but it is only
+          because I wanted to focus on the speech itself and how the page content is
+          loaded and formatted (as the assignment says).
+          Therefore, the styling of this page should be thought of as "minimalistic"
+          rather than "lacking" :) 
+    -->
+    <title>I Have a Dream</title> <!-- speech title -->
+    <!-- Main stylesheet, written fully by hand for this 
+         assignment with minor references used for nifty tricks -->
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <!-- Get jQuery, using .ajax call -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Main script to pull JSON data into body divs -->
+    <!-- Moved JS into its own file for a cleaner HTML page -->
+    <script src="scripts/main.js"></script>
+</head>
+<body>
+    <!-- Welcome is the top bar that simply wraps an info bar and a nav bar -->
+    <div id="welcome">
+        <!-- Basic navigation bar with only the main page button -->
+        <ul class="nav">
+            <li><a href="../assignments.html">&#8592; Assignments</a></li>
+        </ul> <!-- /end nav -->
+        <!-- My info / assignment information -->
+        <h1 class="info">Alex Glasser</h1>
+        <h2 class="info">GUI Programming I</h2>
+        <h3 class="info">Assignment 5 - Formatting Dynamic Text</h3>
+    </div> <!-- /end welcome -->
+    <!-- #contentheader filled by JSON story.title, story.author, etc.
+                 Header/information section -->
+    <div id="contentheader"></div>
+    <!-- images filled by JSON story.images -->
+    <div id="images"></div>
+    <!-- content filled by JSON story.paragraphs -->
+    <div id="content"></div>
+    <!-- footer filled by JSON story.source -->
+    <div id="sourcefooter"></div>
+</body>
+</html>

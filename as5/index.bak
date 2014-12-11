@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I Have a Dream</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="ribbon.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var story;
+        jQuery.ajax({
+            async: false,
+            dataType: "json",
+            url: "ihaveadream.json",    // MLK speech
+            success: function(data) {
+                story = data ;
+            }
+        });
+     
+        $(document).ready(function() {
+            placeContent();
+        });
+    </script>
+    <script type="text/javascript">
+        function placeContent() {
+            // Changed this function to add the header stuff into its own div
+            // for formatting reasons
+            var strHeader = "";  // author, title, location, date
+            var strContent = ""; // speech content
+            var strImage = "";   // image urls also encoded in JSON
+            var strFooter = "";  // source in footer
+
+            // create dynamic content from JSON
+
+            // Header
+            // - Title
+            strHeader += "<h1 class='title'>" + story.title + "</h1>"; 
+            // - Author
+            strHeader += "<h2 class='author'>"
+            strHeader += "by <span class='authorname'>" + story.author + "</span>"; 
+            strHeader += " (<span class='authorlifespan'>" + story.authorlifespan + "</span>)";
+            strHeader += "</h2>";
+            // - Location
+            strHeader += "<h3 class='locationLabel'>delivered at:</h3>";
+            strHeader += "<h3 class='location'>" + story.location + "</h3>";
+            // - Date
+            strHeader += "<h3 class='date'>" + story.date + "</h3>";
+            // End Header
+  
+            // loop through all the paragraphs and sentences
+            for (var para = 0; para < story.text.paragraphs.length; para++ ) {
+                // Each paragraph now has a class so we can style content multiple ways
+                strContent += "<p class=" + story.text.paragraphs[para].class + ">";
+                for (var sent = 0; sent < story.text.paragraphs[para].content.length; sent++ ) {
+                    strContent += story.text.paragraphs[para].content[sent] + "&nbsp; ";
+                    // If this is a poem block, add a newline before each line in the poem
+                    if (story.text.paragraphs[para].class == "poem") {
+                        strContent += "<br>"
+                    }
+                }
+                strContent += "</p>";
+            }
+
+            // set up images of MLK for display 
+            // (Only one for now, but making this dynamic for the future)
+            for (var i = 0; i < story.images.length; i++) {
+                strImage += "<img class='" + story.images[i].class + "' alt='' src=" + story.images[i].url + ">"
+            }
+
+            // added a footer to provide a source for the content of the page
+            strFooter = "<a class='source' href=" + story.source + ">" + story.source + "</a>"
+
+            // place dynamic content on page
+            $("#contentheader").html(strHeader);  // speech title, author, etc.
+            $("#content").html(strContent);       // text content of the speech
+            $("#images").html(strImage);          // images to accomodate #content
+            $("#sourcefooter").html(strFooter);   // footer to provide source
+        }
+    </script>
+</head>
+<body>
+    <!-- http://css-tricks.com/snippets/css/corner-ribbon/ -->
+    <div id="welcome" class="wrapper">
+        <div class="ribbon-wrapper-green">
+            <div id="aboutme">
+                <ul>
+                    <li>Alex Glasser</li>
+                    <li>GUI Programming 1</li>
+                </ul>
+            </div>
+            <div class="ribbon-green"><a href="..">Back to main site...</a></div>
+            <div id="contentheader"></div>
+        </div>
+    </div>
+    <div id="images"></div>
+    <div id="content"></div>
+    <div id="sourcefooter"></div>
+</body>
+</html>

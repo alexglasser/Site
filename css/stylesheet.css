@@ -3,7 +3,7 @@
 /* Header/title font imported from the Google API */
 
 /*
-   File: aglasser/public_html/css/stylesheet.css
+   File: css/stylesheet.css
    Alex Glasser, UMass Lowell Computer Science: alexander_glasser@student.uml.edu
    91.461 - GUI Programming
    Main stylesheet for GUI Programming I website.
@@ -455,7 +455,6 @@ hr.faded {
 #content {
     padding-top: 1em;
     padding-bottom: 1em;
-
 }
 
 /* Percentage image width/height did not validate in HTML5, so I moved it to CSS */
@@ -475,4 +474,40 @@ p.validbadges img {
     border: 0;
     width: 88px;
     height: 31px;
+}
+
+li.active > a {
+     font-weight: bold;
+}
+
+/* Styling for the error page (content/sorry.html) 
+   This overrides the h1 and h2 that are used in other
+   parts of the page (eg. the Home/Assignments/Experience
+   header titles) */
+h1.error, h2.error {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 120%;
+    text-align: center;
+}
+
+h2.error {
+    font-size: 110%;
+}
+
+/* Styling for the new type of experience list that is implemented 
+   No longer is the experience page comprised of separate lists with
+   h2s in between, rather one list with nested uls inside of it
+   .nobullet is for the title of each experience section as well as
+   the li>hr tags. */
+/* Here, hide the bullet for the .nobullet and fix the margin
+   so it is centered properly */
+li.nobullet {
+    list-style: none;
+    margin-left: -3.5em;
+}
+/* Now we want nested uls to actually have the square bullet, and a
+   0em margin (basically remove the margin from the li.nobullet rule) */
+li.nobullet > ul > li {
+    list-style: square;
+    margin-left: 0;
 }
